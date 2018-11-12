@@ -1,0 +1,69 @@
+mysql> create table films(id int(1) primary key not null auto_increment,
+    -> name varchar(10),
+    -> year int(4),
+    -> director varchar(10),
+    -> grade float(5);
+Query OK, 0 rows affected (0.23 sec)
+mysql> desc films;
++----------+-------------+------+-----+---------+----------------+
+| Field    | Type        | Null | Key | Default | Extra          |
++----------+-------------+------+-----+---------+----------------+
+| id       | int(1)      | NO   | PRI | NULL    | auto_increment |
+| name     | varchar(10) | YES  |     | NULL    |                |
+| year     | int(4)      | YES  |     | NULL    |                |
+| director | varchar(10) | YES  |     | NULL    |                |
+| grade    | float       | YES  |     | NULL    |                |
++----------+-------------+------+-----+---------+----------------+
+5 rows in set (0.01 sec)
+mysql> insert into films(name,year,director,grade) values
+    -> ("°ÔÍõ±ð¼§",1994,"kaige chen","9.6");
+Query OK, 1 row affected (0.07 sec)
+mysql> insert into films(name,year,director,grade) values
+    -> ("Ì©Ì¹Äá¿ËºÅ",1997,"Õ²Ä·Ë¹¿¨Ã·Â¡","9.3");
+Query OK, 1 row affected (0.04 sec)
+mysql> insert into films(name,year,director,grade) values
+    -> ("ÁúÃ¨",1988,"¹¬Æé¿¥","9.1");
+Query OK, 1 row affected (0.04 sec)
+mysql> select * from films;
++----+------------+------+--------------+-------+
+| id | name       | year | director     | grade |
++----+------------+------+--------------+-------+
+|  3 | °ÔÍõ±ð¼§   | 1994 | kaige chen   |   9.6 |
+|  4 | °¢¸ÊÕý´«   | 1994 | Robert       |   9.4 |
+|  5 | Ì©Ì¹Äá¿ËºÅ | 1997 | Õ²Ä·Ë¹¿¨Ã·Â¡ |   9.3 |
+|  6 | ÁúÃ¨       | 1988 | ¹¬Æé¿¥       |   9.1 |
++----+------------+------+--------------+-------+
+4 rows in set (0.00 sec)
+mysql> select * from films where name like "%Íõ±ð%";
++----+----------+------+------------+-------+
+| id | name     | year | director   | grade |
++----+----------+------+------------+-------+
+|  3 | °ÔÍõ±ð¼§ | 1994 | kaige chen |   9.6 |
++----+----------+------+------------+-------+
+1 row in set (0.00 sec)
+mysql> select * from films where director like "%ber%";
++----+----------+------+----------+-------+
+| id | name     | year | director | grade |
++----+----------+------+----------+-------+
+|  4 | °¢¸ÊÕý´« | 1994 | Robert   |   9.4 |
++----+----------+------+----------+-------+
+1 row in set (0.00 sec)
+mysql> select * from films where year like 1988;
++----+------+------+----------+-------+
+| id | name | year | director | grade |
++----+------+------+----------+-------+
+|  6 | ÁúÃ¨ | 1988 | ¹¬Æé¿¥   |   9.1 |
++----+------+------+----------+-------+
+1 row in set (0.00 sec)
+
+mysql> select name, max(grade) from films;
++----------+-------------------+
+| name     | max(grade)        |
++----------+-------------------+
+| °ÔÍõ±ð¼§ | 9.600000381469727 |
++----------+-------------------+
+1 row in set (0.01 sec)
+
+
+
+    
